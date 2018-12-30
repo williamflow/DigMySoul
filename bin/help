@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "Type the name of a command followed by -h if you need more informations\nCtr+D to exit without saving"
+echo
+ls bin

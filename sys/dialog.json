@@ -1,0 +1,33 @@
+{
+    "start": {
+        "log": "Hi",
+        "opt": {
+            "who": "Hi...",
+            "dont": "Who are you?"
+        }
+    },
+    "who": {
+        "log": "Who are you?",
+        "opt": {
+            "dont": "You tell me first",
+            "name": "My name is"
+        }
+    },
+    "dont": {
+        "log": "I don't remember...",
+        "next": "think"
+    },
+    "name": {
+        "input": "bin/usermod",
+        "next": "ask"
+    },
+    "ask": {
+        "opt": {
+            "dont": "And who are you?"
+        }
+    },
+    "think": {
+        "log": "I'm not even sure if I need a name anymore.\nI...\nI need to think\nBut maybe you could give me some help",
+        "exit": "_"
+    }
+}

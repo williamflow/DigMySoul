@@ -1,0 +1,3 @@
+#!/bin/sh
+[ "$1" = "-h" ] && echo "Usage: pwd [FILE]\nPrint Working Directory" && exit 0
+echo "/$(cat var/local/wd)"

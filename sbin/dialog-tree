@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+import sys
+import json
+import traceback
+import time
+import os
+
+dialog = open(sys.argv[1], "r")
+dl = json.loads(dialog.read())
+run="start"
+while run is not False:
+    try:
+        time.sleep(1)
+        if "log" in dl[run].keys():
+            print(dl[run]["log"], "\n")
+        if "opt" in dl[run].keys():
+            i=1
+            keys=[]
+            for opt in dl[run]["opt"].items():
+                keys.append(opt[0])
+                print("["+str(i)+"]", opt[1])
+                i=i+1
+            while True:
+                print("$ ", end="")
+                try:
+                    cmd=int(input())
+                except:
+                    cmd=0
+                if cmd>0 and cmd<i:
+                    run = keys[cmd-1]
+                    break
+            continue
+        if "input" in dl[run].keys():
+            print("> ", end="")
+            data=input()
+            try:
+                os.system(dl[run]["input"]+" '"+data+"'")
+            except:
+                pass
+        if "next" in dl[run].keys():
+            run=dl[run]["next"]
+            continue
+        if "exit" in dl[run].keys():
+            run=False
+    except:
+        dialog.close()
+        traceback.print_exc()

@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "Command not found"

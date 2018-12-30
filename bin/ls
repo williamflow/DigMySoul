@@ -1,0 +1,12 @@
+#!/bin/sh 
+[ "$1" = "-h" ] && echo "Usage: ls [DIR]\nList files of current of specified directory" && exit 0
+dir="$1"
+if [ $dir ] ; then
+    if [ ${dir:0:1} ] ; then
+        ls ${dir:1}
+    else
+        ls $(cat var/local/wd)/$dir
+    fi
+else
+    ls $(cat var/local/wd)
+fi
