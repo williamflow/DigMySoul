@@ -1,0 +1,6 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+[ ! -e $(sbin/gametosys $1) ] && echo "No such file or directory" && exit 1
+[ $2 ] && dest=$2
+[ ! $2 ] && dest="."
+ln -s $(sbin/gametosys $1) $(sbin/gametosys $dest)

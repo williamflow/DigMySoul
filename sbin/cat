@@ -1,0 +1,4 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing parameter" && exit 1
+[ "$(sbin/isr $1)" = "1" ] && echo "Permission denied" && exit 1
+cat $(sbin/gametosys $1)

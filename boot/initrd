@@ -1,18 +1,5 @@
 #!/bin/sh
-
-#Cd into digMySoul directory
 cd $(dirname $(dirname $(readlink -f "$0")))
-
+echo $(pwd) > etc/dir
+echo "/home" > etc/wd
 boot/vmlinuz
-
-sbin/PS1
-while read cmd params ; do
-    exe=$(readlink -f bin/$cmd)
-    if [ -x $exe ] ; then
-        $exe $params
-    else
-        sbin/cmd-not-found $cmd $params
-    fi
-    sbin/PS1
-done
-echo exit

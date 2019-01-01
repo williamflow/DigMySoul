@@ -1,0 +1,5 @@
+#!/bin/sh
+cd $(dirname $(dirname $(readlink -f "$0")))
+if [ $1 ] ; then
+    rm bin/$1
+fi

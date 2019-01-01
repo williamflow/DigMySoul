@@ -1,0 +1,5 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+link=$(sbin/gametosys $1)
+echo $(sbin/systogame $(readlink -f $link))
+exit 0

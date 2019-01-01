@@ -1,0 +1,14 @@
+#!/bin/sh
+dir=$(sbin/pwd)
+sbin/PS1
+while read cmd params ; do
+    exe=$(readlink -f bin/$cmd)
+    if [ -x $exe ] ; then
+        $exe $params
+    else
+        sbin/cmd-not-found $cmd $params
+    fi
+    sbin/PS1
+done
+echo exit
+sbin/cd $dir

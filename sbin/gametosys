@@ -1,0 +1,8 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+if [ $(echo $1 | cut -c 1) = "/" ] ; then
+    dir=$1
+else
+    dir=$(sbin/pwd)/$1
+fi
+echo $(cat etc/dir)$dir

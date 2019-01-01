@@ -1,0 +1,6 @@
+#!/bin/sh
+[ $1 ] && dir=$(sbin/readlink $1)
+[ ! $1 ] && dir=/home
+[ ! -d $(sbin/gametosys $dir) ] && echo "No such directory" && exit 1
+[ "$(sbin/isx $dir)" = "1" ] && echo "Permission denied" && exit 1
+echo $dir > etc/wd

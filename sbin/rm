@@ -1,0 +1,6 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+[ ! -e $(sbin/gametosys $1) ] && echo "No such file or directory" && exit 1
+[ "$(sbin/isw $1)" = "1" ] && echo "Permission denied" && exit 1
+rm -r $(sbin/gametosys $1)
+exit 0

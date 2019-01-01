@@ -1,0 +1,6 @@
+#!/bin/sh
+[ $1 ] && dir=$(sbin/readlink $1)
+[ ! $1 ] && dir=$(sbin/pwd)
+[ ! -e $(sbin/gametosys $dir) ] && echo "No such file or directory" && exit 1
+[ "$(sbin/isr $dir)" = "1" ] && echo "Permission denied" && exit 1
+ls $(sbin/gametosys $dir)

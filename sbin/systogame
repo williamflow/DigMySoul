@@ -1,0 +1,9 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+n=$(cat etc/dir | wc -c)
+ret=$(echo $(realpath $1) | cut -c $n-)
+if [ $(echo $ret | wc -c) -eq 1 ] ; then
+    echo "/"
+else
+    echo $ret
+fi
