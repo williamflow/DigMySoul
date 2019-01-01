@@ -1,8 +1,0 @@
-#!/bin/sh
-[ "$1" = "-h" ] && echo "Usage: usermod LOGIN\nChanges the username in LOGIN" && exit 0
-if [ $1 ] ; then
-    mv home/* home/$1
-    echo "User renamed"
-else
-    echo "Specify a username"
-fi

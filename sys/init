@@ -1,3 +1,0 @@
-#!/bin/sh
-dialog-tree proc/dialog.json
-bin/cd
