@@ -1,0 +1,9 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+wid=$(xdotool getactivewindow)
+[ $2 ] && cmd="-e $2"
+xterm -bg black -fg grey -fa Monospace $cmd &
+pid=$!
+echo $pid > run/$1.pid
+echo $(xdotool search --sync --pid $pid) > run/$1.wid
+xdotool windowactivate $wid

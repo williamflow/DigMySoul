@@ -1,0 +1,5 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+cp etc/skel /home/$1
+cp etc/permissions.d/permissions.sample etc/permissions.d/$1
+echo "/home/$1 r w x" >> etc/permissions.d/$1

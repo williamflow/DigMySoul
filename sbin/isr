@@ -1,5 +1,5 @@
 #!/bin/sh
 [ ! $1 ] && echo "Missing operand" && exit 1
-awk -v dir=$(sbin/readlink $1) 'BEGIN {ret=1} {
-    if (($1 == dir) && ($2 == "r")) {ret=0}
+awk -v dir=$(sbin/readlink $1) 'BEGIN {ret=0} {
+    if (($1 == dir) && ($2 == "-")) {ret=1}
 } END {print ret}' etc/permissions

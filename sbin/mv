@@ -1,0 +1,4 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+[ ! $2 ] && echo "Missing operand" && exit 1
+mv $(sbin/gametosys $1) $(sbin/gametosys $2)

@@ -1,2 +1,32 @@
 #!/bin/sh
-sbin/bash
+clear
+cat etc/issue
+i=0
+while [ $i -lt 3 ] ; do
+    echo -n "FlowOS login: "
+    read user
+    [ ! $user ] && exit 1
+    echo -n "Password: "
+    read pass
+    [ ! $pass ] && exit 1
+    cat etc/passwd | while read u p ; do
+        if [ "$user" = "$u" ] && [ "$pass" = "$p" ] ; then
+            echo $user > etc/user
+            echo /home/$user > etc/wd
+            rm etc/permissions
+            ln -s permissions.d/$user etc/permissions
+            cat etc/motd
+            exit 1
+        fi
+    done
+    [ $? -eq 1 ] && sbin/bash && break
+    i=$((i+1))
+    echo
+    echo "Login incorrect"
+    sleep 0.5
+done
+if [ $i -eq 3 ] ; then
+    echo "3 incorrect password attempts"
+else
+    exit 0
+fi

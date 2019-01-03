@@ -1,0 +1,4 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+rm -r home/$1
+rm etc/permissions.d/$1

@@ -1,0 +1,7 @@
+#!/bin/sh
+[ ! $1 ] && echo "Missing operand" && exit 1
+if [ -e etc/sudoers ] ; then
+    cmd=$1
+    shift
+    [ -e sbin/$cmd ] && sbin/$cmd $@
+fi

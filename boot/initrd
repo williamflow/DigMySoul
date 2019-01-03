@@ -1,5 +1,7 @@
 #!/bin/sh
 cd $(dirname $(dirname $(readlink -f "$0")))
 echo $(pwd) > etc/dir
-echo "/home" > etc/wd
-boot/vmlinuz
+rm -r run/*
+sbin/xterm main boot/vmlinuz
+sbin/resize main 100% 100%
+sbin/activate main
